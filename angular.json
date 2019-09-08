@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/css/materials-icons.css",
               "src/assets/css/ghpages-materialize.css",
               "src/assets/css/material-dashboard-pro.css",
               "src/assets/css/ckeditor.css",
