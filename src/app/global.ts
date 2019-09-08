@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2';
 
 export const global = {
-    url: 'http://localhost/SIGPQR-Back-End/public/api/',
+    url: 'https://sigpqr-back-end.herokuapp.com/api/',
     contentType: 'application/x-www-form-urlencoded',
     tagProgram: 'programs',
     tagAdmin: 'admin',
