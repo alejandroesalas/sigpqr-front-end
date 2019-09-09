@@ -54,7 +54,6 @@ export class StudenRequestsComponent implements OnInit {
           && theRequest.request_type_id == REQUEST_TYPE.reclamo));
         this.mapClaims.set('closed',this.requests.filter(theRequest => theRequest.status == STATUS_TYPE._closed
           && theRequest.request_type_id == REQUEST_TYPE.reclamo));
-        console.log(this.mapComplaints.get('open')[0].program);
         //console.log(this.requests);
       }
     }, error => {
