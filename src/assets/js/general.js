@@ -1,17 +1,17 @@
 
 function load(){
   $(document).ready(function(){
-    $('.sidenav').sideNav();
+    $('.sidenav').sidenav();
     $('.modal').modal();
-    $('select').material_select();
+    $('select').select();
     $('.collapsible').collapsible();
     $('.tooltipped').tooltip();
   });
 }
 function loadAllResources() {
-  $('.sidenav').sideNav();
+  $('.sidenav').sidenav();
   $('.modal').modal();
-  $('select').material_select();
+  $('select').select();
   $('.collapsible').collapsible();
   $('.tooltipped').tooltip();
 }
@@ -19,11 +19,11 @@ function loadCollapsiblle(){
   $('.collapsible').collapsible();
 }
 function loadSidenav() {
-  $(".button-collapse").sideNav();
-  $('.sidenav').sideNav();
+  $('.sidenav').sidenav();
+  //$('.sidenav').sideNav();
 }
 function loadSelect() {
-  $('select').material_select();
+  $('select').select();
 }
 /*
 $(document).ready(function(){

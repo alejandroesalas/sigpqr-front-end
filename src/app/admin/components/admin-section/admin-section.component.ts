@@ -4,7 +4,7 @@ import {AuthService} from "../../../services/authService/auth.service";
 import {global} from "../../../global";
 import {Subscription} from "rxjs";
 import {Profile} from "../../../models/Profile";
-
+declare const loadSidenav:any;
 @Component({
   selector: 'admin-section',
   templateUrl: './admin-section.component.html',
@@ -20,6 +20,7 @@ export class AdminSectionComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit() {
+    loadSidenav();
   }
 
   ngOnDestroy(): void {
