@@ -9,7 +9,8 @@ export const global = {
     tagCoordinator: 'coordinators',
     tagFaculty: 'faculties',
     tagAdd: 'add',
-    tagEdit: 'edit'
+    tagEdit: 'edit',
+    patternPassword: '(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$'
 };
 export const swal = Swal.mixin({
     customClass: {

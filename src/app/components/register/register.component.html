@@ -126,15 +126,20 @@
                           <input id="fPaswoord" type="password" class="validate" formControlName="password"
                                  name="password" aria-required="true">
                           <label for="first_name" class="">Contraseña</label>
-                          <span class="helper-text" data-error="wrong" data-success="right">MAximo 6 Caracteres</span>
-                          <small *ngIf="regForm.controls['password'].hasError('required') && regForm.controls['password'].touched"
+                          <!--<span class="helper-text">
+                            Minimo 8 caracteres(Al menos una letra en mayuscula,numeros o caracteres especiales)
+                          </span>-->
+                          <small *ngIf="regForm.controls['password'].hasError('required') && (regForm.controls['password'].touched ||
+                          regForm.controls['password'].dirty )"
                                  class="error right">Campo obligatorio</small>
+                          <small *ngIf="regForm.controls['password'].hasError('pattern')"
+                                 class="error right">Debe contener minimo 8 caracteres(Al menos una letra en mayuscula,numeros o caracteres especiales)</small>
                         </div>
                         <div class="input-field">
                           <i class="material-icons prefix"></i>
                           <input type="password" id="CPassword" required="true" name="CPassword" aria-required="true"
                                  formControlName="CPassword">
-                          <span class="helper-text" data-error="wrong" data-success="right">Confirmar contraseña</span>
+                          <span class="helper-text">Confirmar contraseña</span>
                           <small *ngIf="regForm.controls['CPassword'].hasError('notequal') && regForm.controls['CPassword'].touched"
                                  class="error right">La contraseña no coincide!</small>
                           <small *ngIf="regForm.controls['CPassword'].hasError('required') && regForm.controls['CPassword'].touched"
