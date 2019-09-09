@@ -24,13 +24,13 @@ export class UsersAddComponent implements OnInit {
               private _snackBar: MatSnackBar
   ) {
 
-    this.newUser = new User(0,'','','','',0,'','','',
+    this.newUser = new User(0, '','','','',0,'','','',
       0,0);
   }
   ngOnInit() {
     this.regForm = new FormGroup({
-        name: new FormControl('',Validators.required),
-      'lastName':new FormControl('',Validators.required),
+        name: new FormControl('', Validators.required),
+      lastName:new FormControl('', Validators.required),
       email:new FormControl('',{updateOn:'blur',validators:[Validators.required, Validators.email,
           Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$")],asyncValidators:[emailValidation(this.userService)]}),
       'profile':new FormControl('',Validators.required),
@@ -50,7 +50,7 @@ export class UsersAddComponent implements OnInit {
     this.newUser = this.regForm.value;
     this.newUser.lastname = this.regForm.get('lastName').value;
     this.userService.store(this.newUser).subscribe(response => {
-      if (response.status = 'success'){
+      if (response.status === 'success'){
         this._snackBar.open("Usuario creado con exito",'', {
           duration: 2000,
         });

@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {ModalServiceService} from "../../services/modal-service.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {AuthService} from "../../services/authService/auth.service";
-import {first} from "rxjs/operators";
-import {DynamicScriptLoaderService} from "../../services/dynamic-script-loader.service";
-import {PasswordService} from "../../services/passwords/password.service";
+import {ModalServiceService} from '../../services/modal-service.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AuthService} from '../../services/authService/auth.service';
+import {first} from 'rxjs/operators';
+import {DynamicScriptLoaderService} from '../../services/dynamic-script-loader.service';
+import {PasswordService} from '../../services/passwords/password.service';
 
 @Component({
     selector: 'app-login',
@@ -48,9 +48,9 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 user => {
-                    this.redirectTo(user.profile_id)
+                    this.redirectTo(user.profile_id);
                 }, error => {
-                    //Desplegar SweetAlert por si hay algun error.
+                    // Desplegar SweetAlert por si hay algun error.
                     console.log('error', error);
                 }
             );
@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
         this.passwordService.senEmailReset(form.controls.email.value).subscribe(response => {
             if (response.status == 'success') {
                 console.log(response);
+                localStorage.setItem('email', response.data);
                 this.closeModal(this.modalId);
             }
         }, error => {
@@ -84,7 +85,7 @@ export class LoginComponent implements OnInit {
                 this.authService.logout();
                 //this.router.navigate(['login']);
             }
-        })
+        });
     }
 
     private redirectTo(profile_id: number) {

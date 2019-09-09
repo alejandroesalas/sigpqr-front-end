@@ -22,6 +22,7 @@ import {MatInputModule, MatSelectModule} from "@angular/material";
 import {TokenInterceptorService} from "./services/token-interceptor.service";
 import {CKEditorModule} from "@ckeditor/ckeditor5-angular";
 import {AngularFileUploaderModule}from "angular-file-uploader";
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import {AngularFileUploaderModule}from "angular-file-uploader";
     ErrorComponent,
     VerifyComponent,
     ForgotPasswordComponent,
-    LogoSectionComponent
+    LogoSectionComponent,
+    PasswordResetComponent
   ],
   imports: [
     BrowserModule,
