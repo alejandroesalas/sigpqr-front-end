@@ -1,6 +1,7 @@
 import {Program} from "./Program";
 import {AttachmentRequest} from "./AttachmentRequest";
 import {_Response} from "./_Response";
+import {Student} from './Student';
 
 export const enum STATUS_TYPE {
     _onProcess = 'en proceso',
@@ -20,6 +21,7 @@ export class _Request {
         public program?: Program,
         public responses?: Array<_Response>,
         public attachments?: Array<AttachmentRequest>,
+        public student?: Student,
         public created_at?: string,
         public updated_at?: string
     ) {
