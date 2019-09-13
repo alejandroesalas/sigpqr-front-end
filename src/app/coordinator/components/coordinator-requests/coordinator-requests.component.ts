@@ -52,6 +52,11 @@ export class CoordinatorRequestsComponent implements OnInit {
         }, error => {
             console.log(error);
         });
-
+    }
+    isClosed(request){
+        if (request.status === STATUS_TYPE._closed){
+            return true;
+        }
+        return false;
     }
 }

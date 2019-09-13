@@ -80,7 +80,7 @@
                                             <div class="row">
                                                 <div class="col s4 m4 l4 center-align">
                                                     <!--href="#modal-02"-->
-                                                    <a [routerLink]="[awaitingRequest.id,'timeline']" title="Historial" data-id="'+(elemento+idSolicitud)+'"
+                                                    <a [routerLink]="['timeline']" title="Historial" data-id="'+(elemento+idSolicitud)+'"
                                                        data-solicitud="'+obj[0]+'"
                                                        class="pulse btn-floating btn-large  yellow waves-effect waves-light " data-toggle="tab"
                                                        data-tipo="btn-histo"><i class="material-icons ">access_time</i></a>
@@ -101,7 +101,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="tab-pane" id="solicitudEnProceso">
                                 <div *ngIf="mapRequests.get('onProcess') && mapRequests.get('onProcess').length>0"
                                      class="col s12 m7 l7 card-panel z-depth-2">
@@ -136,7 +135,7 @@
                                             <div class="row">
                                                 <div class="col s4 m4 l4 center-align">
                                                     <!--href="#modal-02"-->
-                                                    <a [routerLink]="[awaitingRequest.id,'timeline']" title="Historial" data-id="'+(elemento+idSolicitud)+'"
+                                                    <a [routerLink]="['timeline']" title="Historial" data-id="'+(elemento+idSolicitud)+'"
                                                        data-solicitud="'+obj[0]+'"
                                                        class="pulse btn-floating btn-large  yellow waves-effect waves-light " data-toggle="tab"
                                                        data-tipo="btn-histo"><i class="material-icons ">access_time</i></a>
@@ -191,7 +190,7 @@
                                             <div class="row">
                                                 <div class="col s4 m4 l4 center-align">
                                                     <!--href="#modal-02"-->
-                                                    <a [routerLink]="[awaitingRequest.id,'timeline']" title="Historial" data-id="'+(elemento+idSolicitud)+'"
+                                                    <a [routerLink]="['timeline']" title="Historial" data-id="'+(elemento+idSolicitud)+'"
                                                        data-solicitud="'+obj[0]+'"
                                                        class="pulse btn-floating btn-large  yellow waves-effect waves-light " data-toggle="tab"
                                                        data-tipo="btn-histo"><i class="material-icons ">access_time</i></a>
@@ -201,7 +200,7 @@
                                                        data-tipo="btn-adj" data-solicitud="'+obj[0]+'"><i
                                                             class="material-icons ">attachment</i></a>
                                                 </div>
-                                                <div class="col s4 m4 l4 center-align">
+                                                <div *ngIf="!isClosed(awaitingRequest)" class="col s4 m4 l4 center-align">
                                                     <a title="Responder" style="visibility:visible"
                                                        class="respuesta pulse btn-floating btn-large  waves-effect waves-light  modal-trigger"
                                                        data-remitente="'+obj[3]+'" data-solicitud="'+obj[0]+'" data-destinatoario="'+obj[4]+'"

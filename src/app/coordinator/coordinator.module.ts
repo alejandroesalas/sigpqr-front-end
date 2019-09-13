@@ -11,6 +11,8 @@ import {CoordinatorRequestsComponent} from "./components/coordinator-requests/co
 import {DynamicScriptLoaderService} from "../services/dynamic-script-loader.service";
 import {AuthService} from "../services/authService/auth.service";
 import {AuthGuard} from "../guards/auth.guard";
+import { CoordinatorRequestsTimelineComponent } from './components/coordinator-requests-timeline/coordinator-requests-timeline.component';
+import { CoordinatorRequestsReplyComponent } from './components/coordinator-requests-reply/coordinator-requests-reply.component';
 
 @NgModule({
   declarations:[
@@ -19,6 +21,8 @@ import {AuthGuard} from "../guards/auth.guard";
     CoordinatorProfileComponent,
     CoordinatorComponent,
     EstructuraComponent,
+    CoordinatorRequestsTimelineComponent,
+    CoordinatorRequestsReplyComponent,
   ],
   imports: [
     CommonModule,
