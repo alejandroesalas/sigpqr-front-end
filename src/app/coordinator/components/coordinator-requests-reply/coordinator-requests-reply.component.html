@@ -1,0 +1,29 @@
+<main>
+    <form>
+        <div class="input-field col s12 m4 green-text">
+            <i class="material-icons prefix">mode_edit</i>
+            <input id="inAsunto" type="text">
+            <label for="inAsunto">Asunto </label>
+        </div>
+        <div class="input-field col s12 black-text">
+            <textarea id="textarea1" class="materialize-textarea"></textarea>
+            <label for="textarea1">Descripción</label>
+        </div>
+        <div class="input-field col s12">
+            <select id="selectEstado">
+            </select>
+            <label>Seleccione un estado</label>
+        </div>
+        <div class="file-field input-field col s12">
+            <span class="title">Adjuntar archivos</span>
+            <input type="file" multiple="" id="files">
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" placeholder="No se ha seleccionado ningún archivo">
+            </div>
+        </div>
+        <div class="col s12" align="center">
+            <button type="reset" href="" class="btn btn-danger">Cancelar</button>
+            <button  class="btn btn-success"   id="btnRegistrar" >Registrar</button>
+        </div>
+    </form>
+</main>
