@@ -13,6 +13,7 @@ import {AuthService} from "../services/authService/auth.service";
 import {AuthGuard} from "../guards/auth.guard";
 import { CoordinatorRequestsTimelineComponent } from './components/coordinator-requests-timeline/coordinator-requests-timeline.component';
 import { CoordinatorRequestsReplyComponent } from './components/coordinator-requests-reply/coordinator-requests-reply.component';
+import {AngularFileUploaderModule} from 'angular-file-uploader';
 
 @NgModule({
   declarations:[
@@ -24,13 +25,14 @@ import { CoordinatorRequestsReplyComponent } from './components/coordinator-requ
     CoordinatorRequestsTimelineComponent,
     CoordinatorRequestsReplyComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    CoordinatorRoutingModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        CoordinatorRoutingModule,
+        AngularFileUploaderModule
+    ],
   exports:[
     CoordinatorComponent,
     CoordinatorHomeComponent,
