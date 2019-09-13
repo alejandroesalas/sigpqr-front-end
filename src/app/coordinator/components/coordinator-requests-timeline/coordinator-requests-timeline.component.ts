@@ -26,7 +26,6 @@ export class CoordinatorRequestsTimelineComponent implements OnInit {
     ngOnInit() {
         this.route.params.subscribe(value => {
             const id = +value['idReq'];
-            console.log('param',id)
             if (isNumber(id)) {
                 this.loadRequest(id);
             }
@@ -37,7 +36,6 @@ export class CoordinatorRequestsTimelineComponent implements OnInit {
         this.requestService.getRequest(id).subscribe(response => {
             if (response.status === 'success') {
                 this.solicitud = response.data;
-                console.log(this.solicitud);
             }
         }, error => {
             console.log(error);
@@ -45,6 +43,6 @@ export class CoordinatorRequestsTimelineComponent implements OnInit {
     }
 
     isRequestOpen(): boolean {
-        return this.solicitud.status == STATUS_TYPE._open;
+        return this.solicitud.status === STATUS_TYPE._open;
     }
 }
