@@ -14,6 +14,7 @@ import {AuthGuard} from "../guards/auth.guard";
 import { CoordinatorRequestsTimelineComponent } from './components/coordinator-requests-timeline/coordinator-requests-timeline.component';
 import { CoordinatorRequestsReplyComponent } from './components/coordinator-requests-reply/coordinator-requests-reply.component';
 import {AngularFileUploaderModule} from 'angular-file-uploader';
+import {MatFormFieldModule, MatSelectModule} from '@angular/material';
 
 @NgModule({
   declarations:[
@@ -31,7 +32,9 @@ import {AngularFileUploaderModule} from 'angular-file-uploader';
         ReactiveFormsModule,
         HttpClientModule,
         CoordinatorRoutingModule,
-        AngularFileUploaderModule
+        AngularFileUploaderModule,
+        MatFormFieldModule,
+        MatSelectModule
     ],
   exports:[
     CoordinatorComponent,

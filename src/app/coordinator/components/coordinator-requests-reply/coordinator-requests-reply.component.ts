@@ -8,6 +8,9 @@ import {AuthService} from '../../../services/authService/auth.service';
 import {isNumber} from 'util';
 import {AngularFileUploaderComponent} from 'angular-file-uploader';
 import {global} from '../../../global';
+import {_Response} from '../../../models/_Response';
+
+declare var loadAllResources;
 
 @Component({
     selector: 'app-coordinator-requests-reply',
@@ -17,6 +20,7 @@ import {global} from '../../../global';
 export class CoordinatorRequestsReplyComponent implements OnInit {
 
     public solicitud: _Request;
+    public respuesta: _Response;
     public currentUser: User;
     public afuConfig;
     private fileUpload1: AngularFileUploaderComponent;
@@ -52,11 +56,13 @@ export class CoordinatorRequestsReplyComponent implements OnInit {
                 afterUploadMsg_error: 'No se ha podido subir los archivos'
             }
         };
+        this.respuesta = new _Response(0, '', '', 1, 0, 0, 0, '');
     }
 
     ngOnInit() {
+        loadAllResources();
         this.route.params.subscribe(value => {
-            const id = +value['id'];
+            const id = +value['idReq'];
             if (isNumber(id)) {
                 this.loadRequest(id);
             }
@@ -79,6 +85,11 @@ export class CoordinatorRequestsReplyComponent implements OnInit {
     isRequestOpen(): boolean {
         return this.solicitud.status === STATUS_TYPE._open;
     }
+
+    createResponse() {
+        this.respuesta.request_id = this.solicitud.id;
+    }
+
     uploadedFiles(data) {
         /*const dat = JSON.parse(data.response);
         console.log('archivos',dat);

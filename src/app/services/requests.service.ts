@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {global} from '../global';
 import {_Request} from '../models/_Request';
 import {Observable} from 'rxjs';
+import {_Response} from '../models/_Response';
 
 @Injectable({
     providedIn: 'root'
@@ -56,5 +57,11 @@ export class RequestsService {
     getRequestByProgramAndType(requestType: number): Observable<any> {
         const headers = new HttpHeaders().set('content-type', global.contentType);
         return this.http.get<any>(global.url + 'request-types/' + requestType + '/requests', {headers: headers});
+    }
+
+    CreateResponse(response: _Response): Observable<any> {
+        const headers = new HttpHeaders().set('content-type', global.contentType);
+        const params = 'json=' + JSON.stringify(_Response);
+        return this.http.post<any>(global.url + 'responses/', {headers: headers});
     }
 }
