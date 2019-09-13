@@ -27,7 +27,6 @@ export class RequestsTimelineComponent implements OnInit {
             let id = +value['id'];
             if (isNumber(id)) {
                 this.loadRequest(id);
-                1
             }
         });
     }

@@ -21,7 +21,7 @@ const coordinatorRoutes: Routes = [
                     {path: ':typeReq', children: [
                             {path: '', component: CoordinatorRequestsComponent},
                             {path: 'reply', component: CoordinatorRequestsReplyComponent},
-                            {path: 'timeline', component: CoordinatorRequestsTimelineComponent}
+                            {path: ':idReq/timeline', component: CoordinatorRequestsTimelineComponent}
                         ]}
                 ]},
             {path: 'profile', component: CoordinatorProfileComponent}
