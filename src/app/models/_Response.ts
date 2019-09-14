@@ -15,7 +15,7 @@ export class _Response {
         public id: number,
         public title: string,
         public description: string,
-        public status_response: number,
+        public status_response: string,
         public type: number,
         public request_id: number,
         public user_id: number,

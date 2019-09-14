@@ -31,7 +31,7 @@ export class StudentComponent implements OnInit, OnDestroy {
         this.authService.logout();
         this.router.navigate(['login']);
       }
-    })
+    });
   }
 
   ngOnDestroy(): void {

@@ -6,7 +6,7 @@ import {Student} from './Student';
 export const enum STATUS_TYPE {
     _onProcess = 'en proceso',
     _open = 'abierta',
-    _closed = 'cerrada'
+    _closed = 'cerrado'
 }
 
 export class _Request {

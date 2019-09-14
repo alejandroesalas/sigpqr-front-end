@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-            <form #regResponse="ngForm" (ngSubmit)="createResponse()">
+            <form #regResponse="ngForm" (ngSubmit)="createResponse(regResponse)">
                 <div class="input-field col s12 m4 green-text">
                     <i class="material-icons prefix">mode_edit</i>
                     <input id="inAsunto" type="text" [(ngModel)]="respuesta.title" name="title">
@@ -16,9 +16,9 @@
                     <mat-form-field style="width: 100%">
                         <mat-label>Estado</mat-label>
                         <mat-select id="docid" name="status_response" required [(ngModel)]="respuesta.status_response">
-                            <mat-option value="abierta">ABIERTA</mat-option>
+                            <mat-option value="abierta" selected>ABIERTA</mat-option>
                             <mat-option value="en proceso">EN PROCESO</mat-option>
-                            <mat-option value="cerrado">CERRADO</mat-option>
+                            <mat-option value="cerrada">CERRADO</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>

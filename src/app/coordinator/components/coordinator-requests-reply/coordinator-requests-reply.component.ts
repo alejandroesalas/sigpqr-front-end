@@ -9,6 +9,7 @@ import {isNumber} from 'util';
 import {AngularFileUploaderComponent} from 'angular-file-uploader';
 import {global} from '../../../global';
 import {_Response} from '../../../models/_Response';
+import {MatSnackBar} from '@angular/material';
 
 declare var loadAllResources;
 
@@ -29,7 +30,8 @@ export class CoordinatorRequestsReplyComponent implements OnInit {
     constructor(private router: Router,
                 private route: ActivatedRoute,
                 private requestService: RequestsService,
-                private authService: AuthService) {
+                private authService: AuthService,
+                private _snackBar: MatSnackBar) {
         this.currentUser = authService.currentUserValue;
         this.afuConfig = {
             multiple: true,
@@ -38,7 +40,7 @@ export class CoordinatorRequestsReplyComponent implements OnInit {
             uploadAPI: {
                 url: global.url + 'requests/uploadFiles',
                 headers: {
-                    'Authorization': 'Bearer ' + this.currentUser.token
+                    Authorization: 'Bearer ' + this.currentUser.token
                 }
             },
             theme: 'dragNDrop',
@@ -56,7 +58,7 @@ export class CoordinatorRequestsReplyComponent implements OnInit {
                 afterUploadMsg_error: 'No se ha podido subir los archivos'
             }
         };
-        this.respuesta = new _Response(0, '', '', 1, 0, 0, 0, '');
+        this.respuesta = new _Response(0, '', '', '', 0, 0, 0, '');
     }
 
     ngOnInit() {
@@ -73,7 +75,6 @@ export class CoordinatorRequestsReplyComponent implements OnInit {
         this.requestService.getRequest(id).subscribe(response => {
             if (response.status === 'success') {
                 this.solicitud = response.data;
-                console.log(this.solicitud);
             }
         }, error => {
             console.log(error);
@@ -86,14 +87,28 @@ export class CoordinatorRequestsReplyComponent implements OnInit {
         return this.solicitud.status === STATUS_TYPE._open;
     }
 
-    createResponse() {
+    createResponse(regResponse) {
         this.respuesta.request_id = this.solicitud.id;
+        this.respuesta.type = this.solicitud.request_type_id;
+        this.respuesta.user_email = this.currentUser.email;
+        console.log(this.respuesta);
+        this.requestService.CreateResponse(this.respuesta).subscribe(response => {
+            if (response.status === 'success') {
+                this._snackBar.open('Su Respuesta ha sido enviada con exito', 'X', {
+                    duration: 3000,
+                });
+                console.log(response);
+                regResponse.reset();
+                this.router.navigate(['../../']);
+            }
+
+        }, error => {
+            console.log(error);
+        });
     }
 
     uploadedFiles(data) {
-        /*const dat = JSON.parse(data.response);
-        console.log('archivos',dat);
-        this.request.attachments = dat.data;
-        console.log('request',this.request);*/
+        const dat = JSON.parse(data.response);
+        this.respuesta.attachments = dat.data;
     }
 }

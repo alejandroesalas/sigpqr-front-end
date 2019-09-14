@@ -61,7 +61,7 @@ export class RequestsService {
 
     CreateResponse(response: _Response): Observable<any> {
         const headers = new HttpHeaders().set('content-type', global.contentType);
-        const params = 'json=' + JSON.stringify(_Response);
-        return this.http.post<any>(global.url + 'responses/', {headers: headers});
+        const params = 'json=' + JSON.stringify(response);
+        return this.http.post<any>(global.url + 'responses', params,{headers: headers});
     }
 }
