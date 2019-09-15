@@ -62,6 +62,11 @@ export class RequestsService {
     CreateResponse(response: _Response): Observable<any> {
         const headers = new HttpHeaders().set('content-type', global.contentType);
         const params = 'json=' + JSON.stringify(response);
-        return this.http.post<any>(global.url + 'responses', params,{headers: headers});
+        return this.http.post<any>(global.url + 'responses', params, {headers: headers});
+    }
+
+    count(type_id: number): Observable<any> {
+        const headers = new HttpHeaders().set('content-type', global.contentType);
+        return this.http.get<any>(global.url + 'count-request-types/' + type_id, {headers: headers});
     }
 }
