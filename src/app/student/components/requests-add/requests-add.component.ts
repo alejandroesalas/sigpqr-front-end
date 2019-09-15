@@ -108,7 +108,6 @@ export class RequestsAddComponent implements OnInit {
 
     storeRequest(form) {
         this.request.student_id = this.student.id;
-        console.log(this.request);
         this.requestService.storeRequest(this.request).subscribe(response => {
             if (response.status == 'success') {
                 this._snackBar.open('Su solicitud ha sido enviada con exito', 'X', {

@@ -28,8 +28,10 @@ export class RequestsService {
     }
 
     storeRequest(request: _Request): Observable<any> {
+        request.description = global.htmlEntities(request.description).trim();
         let headers = new HttpHeaders().set('content-type', global.contentType);
         let params = 'json=' + JSON.stringify(request);
+        console.log(params);
         return this.http.post<any>(global.url + 'requests', params, {headers: headers});
     }
 
@@ -69,4 +71,5 @@ export class RequestsService {
         const headers = new HttpHeaders().set('content-type', global.contentType);
         return this.http.get<any>(global.url + 'count-request-types/' + type_id, {headers: headers});
     }
+
 }
