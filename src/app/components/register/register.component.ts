@@ -20,12 +20,14 @@ export class RegisterComponent implements OnInit {
     public programas: Program[];
     public regForm: FormGroup;
     public newUser: Student;
+    public loading: boolean;
 
     constructor(private userService: UserService,
                 private studentService: StudentService,
                 private dynamicScriptLoader: DynamicScriptLoaderService,
                 private programService: ProgramService,
                 private router: Router) {
+        this.loading = false;
         this.newUser = new User(0, '', '', '', '', 0, '', '', '',
             0, 0);
     }
@@ -55,19 +57,20 @@ export class RegisterComponent implements OnInit {
     private loadPrograms() {
         this.programService.getAll(false).subscribe(value => {
             this.programas = value.data;
-            console.log('respuesta', value);
         }, error => {
             console.log('errores', error);
         });
     }
 
     register() {
+        this.loading = true;
         this.newUser = this.regForm.value;
         this.newUser.program_id = this.regForm.value._program;
         this.newUser.password_confirmation = this.regForm.value.CPassword;
         console.log(this.newUser);
         this.studentService.store(this.newUser).subscribe(response => {
             if (response.status === 'success') {
+                this.loading = true;
                 swal.fire({
                     title: 'Registro',
                     text: 'Usuario Registrado Con exito\n' +

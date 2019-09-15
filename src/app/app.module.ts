@@ -18,7 +18,7 @@ import {CoordinatorModule} from "./coordinator/coordinator.module";
 import {StudentModule} from "./student/student.module";
 import {AdminModule} from "./admin/admin.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatInputModule, MatSelectModule} from "@angular/material";
+import {MatInputModule, MatProgressBarModule, MatSelectModule} from '@angular/material';
 import {TokenInterceptorService} from "./services/token-interceptor.service";
 import {CKEditorModule} from "@ckeditor/ckeditor5-angular";
 import {AngularFileUploaderModule}from "angular-file-uploader";
@@ -35,22 +35,23 @@ import { PasswordResetComponent } from './components/password-reset/password-res
     LogoSectionComponent,
     PasswordResetComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    CKEditorModule,
-    AngularFileUploaderModule,
-    ModalModule,
-    MatSelectModule,
-    MatInputModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    CoordinatorModule,
-    StudentModule,
-    AdminModule,
-    routing
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        CKEditorModule,
+        AngularFileUploaderModule,
+        ModalModule,
+        MatSelectModule,
+        MatInputModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        CoordinatorModule,
+        StudentModule,
+        AdminModule,
+        routing,
+        MatProgressBarModule
+    ],
   providers: [appRoutingProviders,
   AuthService,ModalServiceService,{
     provide: HTTP_INTERCEPTORS,

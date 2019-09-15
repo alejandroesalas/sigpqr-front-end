@@ -5,6 +5,7 @@ import {AuthService} from '../../services/authService/auth.service';
 import {first} from 'rxjs/operators';
 import {DynamicScriptLoaderService} from '../../services/dynamic-script-loader.service';
 import {PasswordService} from '../../services/passwords/password.service';
+import {swal} from '../../global';
 
 @Component({
     selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
     public password: string;
     returnUrl: string;
     modalId: string;
+    public loading: boolean;
 
     constructor(private passwordService: PasswordService,
                 private modalService: ModalServiceService,
@@ -23,6 +25,7 @@ export class LoginComponent implements OnInit {
                 private authService: AuthService,
                 private route: ActivatedRoute,
                 private router: Router) {
+        this.loading = false;
         this.modalId = 'forgotPassWordModal';
         // redirect to specific home if already logged in
         const currentUser = this.authService.currentUserValue;
@@ -44,12 +47,25 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit(form) {
+        this.loading = true;
         this.authService.login(this.email, this.password)
             .pipe(first())
             .subscribe(
                 user => {
+                    this.loading = false;
                     this.redirectTo(user.profile_id);
                 }, error => {
+                    this.loading = false;
+                    swal.fire({
+                        title: 'No autorizado',
+                        text: error.error.error,
+                        type: 'error',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.value) {
+                            this.router.navigate(['login']);
+                        }
+                    });
                     // Desplegar SweetAlert por si hay algun error.
                     console.log('error', error);
                 }

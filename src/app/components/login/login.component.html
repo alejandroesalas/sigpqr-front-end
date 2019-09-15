@@ -19,7 +19,7 @@
             <div class="card-body ">
               <p class="card-description text-center">SIGPQR</p>
               <div class="container">
-
+                <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
                 <div class="input-field">
                   <i class="material-icons prefix">contact_mail</i>
                   <input id="correo" name="email" type="text" class="validate" required
@@ -48,7 +48,6 @@
               <a [routerLink]="['/registro']" class="btn btn-success btn-link ">Registrarme<div class="ripple-container"></div></a>
               <a  class="btn btn-danger btn-link left modal-trigger" (click)="openModal('forgotPassWordModal')">Olvide contraseña</a>
             </div>
-
           </div>
         </form>
       </div>
