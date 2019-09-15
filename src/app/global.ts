@@ -11,7 +11,7 @@ export const global = {
     tagAdd: 'add',
     tagEdit: 'edit',
     patternPassword: '(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$',
-    htmlEntities: function(str) {
+    htmlEntities(str) {
         return String(str).replace('&ntilde;', 'ñ')
             .replace('&Ntilde;', 'Ñ')
             .replace('&amp;', '&')
