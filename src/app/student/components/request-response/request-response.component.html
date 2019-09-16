@@ -1,0 +1,27 @@
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form #regResponse="ngForm" (ngSubmit)="createResponse(regResponse)">
+                    <div class="input-field col s12 m4 green-text">
+                        <i class="material-icons prefix">mode_edit</i>
+                        <input id="inAsunto" type="text" [(ngModel)]="respuesta.title" name="title">
+                        <label for="inAsunto">Asunto </label>
+                    </div>
+                    <div class="input-field col s12 black-text">
+                        <textarea id="textarea1" class="materialize-textarea" [(ngModel)]="respuesta.description" name="description" required=""></textarea>
+                        <label for="textarea1">Descripción</label>
+                    </div>
+                    <div class="file-field input-field col s12">
+                        <angular-file-uploader #fileUpload1 id="image" [config]="afuConfig"
+                                               (ApiResponse)="uploadedFiles($event)" required=""></angular-file-uploader>
+                    </div>
+                    <div class="col s12" align="center">
+                        <button [routerLink]="['../../']" type="reset" href="" class="btn btn-danger">Cancelar</button>
+                        <button [disabled]="regResponse.invalid" class="btn btn-success" id="btnRegistrar">Registrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>

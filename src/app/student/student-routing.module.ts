@@ -9,6 +9,8 @@ import {AuthGuard} from '../guards/auth.guard';
 import {Profile} from '../models/Profile';
 import {RequestsAddComponent} from './components/requests-add/requests-add.component';
 import {RequestsTimelineComponent} from './components/requests-timeline/requests-timeline.component';
+import {CoordinatorRequestsReplyComponent} from '../coordinator/components/coordinator-requests-reply/coordinator-requests-reply.component';
+import {RequestResponseComponent} from './components/request-response/request-response.component';
 
 
 const studentRoutes: Routes = [
@@ -23,6 +25,7 @@ const studentRoutes: Routes = [
                 path: 'requests', children: [
                     {path: '', component: StudenRequestsComponent},
                     {path: 'add', component: RequestsAddComponent},
+                    {path: ':idReq/reply', component: RequestResponseComponent},
                     {path: ':id/timeline', component: RequestsTimelineComponent}
                 ]
             },
