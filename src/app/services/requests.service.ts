@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AuthService} from './authService/auth.service';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {global} from '../global';
 import {_Request} from '../models/_Request';
 import {Observable} from 'rxjs';
@@ -70,6 +70,14 @@ export class RequestsService {
     count(type_id: number): Observable<any> {
         const headers = new HttpHeaders().set('content-type', global.contentType);
         return this.http.get<any>(global.url + 'count-request-types/' + type_id, {headers: headers});
+    }
+
+    downloadFile(route: string): Observable<any> {
+        const headers = new HttpHeaders().set('content-type', global.contentType);
+        const httpParams = new HttpParams().set('route', route);
+        return this.http.post<any>(global.url + 'download/', httpParams, {
+            headers: headers
+        });
     }
 
 }

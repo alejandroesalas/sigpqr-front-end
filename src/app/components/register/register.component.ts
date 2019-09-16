@@ -92,6 +92,7 @@ export class RegisterComponent implements OnInit {
                 type: 'error',
                 confirmButtonText: 'OK'
             });
+            this.loading = false;
             console.log(error);
         });
 

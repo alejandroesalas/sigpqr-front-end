@@ -18,6 +18,7 @@ import {MatSelectModule} from "@angular/material";
 import {AngularFileUploaderModule} from "angular-file-uploader";
 import { RequestsTimelineComponent } from './components/requests-timeline/requests-timeline.component';
 import { RequestResponseComponent } from './components/request-response/request-response.component';
+import { StudentRequestAttachmentComponent } from './components/student-request-attachment/student-request-attachment.component';
 
 @NgModule({
   declarations:[
@@ -28,7 +29,8 @@ import { RequestResponseComponent } from './components/request-response/request-
     StudenSectionComponent,
     RequestsAddComponent,
     RequestsTimelineComponent,
-    RequestResponseComponent
+    RequestResponseComponent,
+    StudentRequestAttachmentComponent
   ],
   imports: [
     CommonModule,

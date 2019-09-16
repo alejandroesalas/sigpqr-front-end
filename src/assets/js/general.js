@@ -1,4 +1,8 @@
-
+function loadFinder() {
+  CKFinder.popup({
+    height: 600
+  });
+}
 function load(){
   $(document).ready(function(){
     $('.sidenav').sidenav();

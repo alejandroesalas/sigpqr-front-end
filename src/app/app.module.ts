@@ -23,6 +23,7 @@ import {TokenInterceptorService} from "./services/token-interceptor.service";
 import {CKEditorModule} from "@ckeditor/ckeditor5-angular";
 import {AngularFileUploaderModule}from "angular-file-uploader";
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import {WindowRefService} from './services/window-ref.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +58,8 @@ import { PasswordResetComponent } from './components/password-reset/password-res
     provide: HTTP_INTERCEPTORS,
       useClass:TokenInterceptorService,
       multi:true
-    }],
+    },
+  WindowRefService],
   exports: [
 
   ],

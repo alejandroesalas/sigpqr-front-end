@@ -11,6 +11,7 @@ import {RequestsAddComponent} from './components/requests-add/requests-add.compo
 import {RequestsTimelineComponent} from './components/requests-timeline/requests-timeline.component';
 import {CoordinatorRequestsReplyComponent} from '../coordinator/components/coordinator-requests-reply/coordinator-requests-reply.component';
 import {RequestResponseComponent} from './components/request-response/request-response.component';
+import {StudentRequestAttachmentComponent} from './components/student-request-attachment/student-request-attachment.component';
 
 
 const studentRoutes: Routes = [
@@ -26,7 +27,8 @@ const studentRoutes: Routes = [
                     {path: '', component: StudenRequestsComponent},
                     {path: 'add', component: RequestsAddComponent},
                     {path: ':idReq/reply', component: RequestResponseComponent},
-                    {path: ':id/timeline', component: RequestsTimelineComponent}
+                    {path: ':id/timeline', component: RequestsTimelineComponent},
+                    {path: ':id/adjuntos', component: StudentRequestAttachmentComponent}
                 ]
             },
             {path: 'profile', component: StudentProfileComponent}
