@@ -7,7 +7,10 @@
                 <div class="row" *ngFor="let item of solicitud.attachments;"
                      style="margin:10px;padding:5px;background-color:rgb(231, 229, 229); border-radius:5px; line-height:40px;">
                     <div class="col-sm-7">{{item.name}}</div>
-                    <div class="col-sm-5" style="text-align:center;"><button type="button" class="btn btn-primary" (click)="download(item)">Download</button></div>
+                    <div class="col-sm-5" style="text-align:center;">
+                        <a class="btn btn-primary" download (click)="download(item)">Download</a>
+                    </div>
+                    <!--<a [href]="url+item.route" download target="_blank">{{item.name}}</a>-->
                 </div>
             </div>
         </div>
