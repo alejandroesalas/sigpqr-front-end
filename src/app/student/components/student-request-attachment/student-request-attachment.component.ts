@@ -5,6 +5,9 @@ import {User} from '../../../models/User';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RequestsService} from '../../../services/requests.service';
 import {AuthService} from '../../../services/authService/auth.service';
+import {DomSanitizer} from '@angular/platform-browser';
+import {WindowRefService} from '../../../services/window-ref.service';
+import {saveAs} from 'file-saver';
 
 @Component({
     selector: 'app-student-request-attachment',
@@ -15,11 +18,14 @@ export class StudentRequestAttachmentComponent implements OnInit {
 
     public solicitud: _Request;
     public currentUser: User;
+    fileUrl;
 
     constructor(private router: Router,
                 private route: ActivatedRoute,
                 private requestService: RequestsService,
-                private authService: AuthService) {
+                private authService: AuthService,
+                private sanitizer: DomSanitizer,
+                private winRef: WindowRefService) {
         this.currentUser = authService.currentUserValue;
     }
 
@@ -45,9 +51,12 @@ export class StudentRequestAttachmentComponent implements OnInit {
     }
 
     download(attachment) {
-        this.requestService.downloadFile(attachment._route).subscribe(response => {
-            console.log(response);
+        const newWindow = this.winRef.nativeWindow;
+        console.log(attachment.route);
+        this.requestService.downloadFile(attachment.route).subscribe(response => {
+            saveAs(response, attachment.name);
         }, error => {
+            console.log(error);
 
         });
     }

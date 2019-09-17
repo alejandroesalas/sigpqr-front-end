@@ -74,8 +74,8 @@ export class RequestsService {
 
     downloadFile(route: string): Observable<any> {
         const headers = new HttpHeaders().set('content-type', global.contentType);
-        const httpParams = new HttpParams().set('route', route);
-        return this.http.post<any>(global.url + 'download/', httpParams, {headers: headers});
+        const httpParams = new HttpParams().set('filename', route);
+        return this.http.post<any>(global.url + 'download/', httpParams, {headers,responseType: 'blob' as 'json'});
     }
 
 }
